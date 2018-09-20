@@ -1,10 +1,14 @@
 page-home {
+    background:color($colors, dark);
+    color:color($colors, light);
+    margin-top:30px;
 
   h1 {
-    font-size: 300%
+    font-size: 200%
   }
 
   .list {
     background-color: #435e90;
   }
+
 }
