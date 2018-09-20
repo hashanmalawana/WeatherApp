@@ -9,19 +9,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'settings.html',
 })
 export class SettingsPage {
-  city:string;
-  state:string;
+  region:string;
+  country:string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private Storage:Storage) {
 
     this.Storage.get('location').then((val) => {
     if(val != null){
   let location = JSON.parse(val);
-  this.city = location.city;
-  this.state = location.state;
+  this.region = location.region;
+  this.country = location.country;
 } else {
-this.city = 'Miami';
-this.state = 'FL';
+this.region = 'Colombo';
+this.country = 'SL';
 }
     })
 
@@ -33,8 +33,8 @@ this.state = 'FL';
 
   saveForm(){
     let location = {
-      city: this.city,
-      state: this.state
+      region: this.region,
+      country: this.country
     }
     this.Storage.set('location', JSON.stringify(location));
     this.navCtrl.push(HomePage);

@@ -1,8 +1,9 @@
 .home{
-  background: color($colors, primary);
+  background:color($colors, primary);
   color:color($colors, light);
-  margin-top: 30px;
+  margin-top:30px;
 }
+
 .toolbar-title{
   text-align: center;
 }
@@ -12,7 +13,7 @@
 }
 
 .temp{
-  font-size: 90px;
+  font-size:90px;
   text-align: center;
   font-weight: normal;
 }
@@ -26,7 +27,7 @@
 
 }
 .location{
-  font-size: 40px;
+  font-size:40px;
 }
 .desc{
   font-size: 30px;

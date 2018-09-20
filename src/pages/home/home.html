@@ -12,7 +12,7 @@
         <h2 class="location">{{weather.display_location.full}}</h2>
 <div class="icon"><img src="{{weather.icon_url}}" alt=""></div>
 <h3 class="desc">{{weather.weather}}</h3>
-<h1 class="temp">{{weather.temp_f}}&deg;</h1>
+<h1 class="temp">{{weather.temp_f}};</h1>
       </ion-col>
     </ion-row>
 
@@ -20,15 +20,15 @@
   <ion-col width-100>
     <ion-list>
       <ion-item>
-        <strong>Temp: </strong> {{weather.temperature_string}}
+        <strong>Temp: </strong> {{weather.temp_f}}
       </ion-item>
 
       <ion-item>
-          <strong>Humidity: </strong> {{weather.relative_humidity}}
+          <strong>Humidity: </strong> {{weather.humidity}}
         </ion-item>
 
         <ion-item>
-            <strong>Dewpoint: </strong> {{weather.dewpoint_string}}
+            <strong>Pressure: </strong> {{weather.pressure_mm}}
           </ion-item>
 
 

@@ -11,8 +11,8 @@ export class HomePage {
 
   weather:any;
   location:{
-    city:string,
-    state:string
+    region:string,
+    country:string
   }
   constructor(public navCtrl: NavController, private weatherProvider:WeatherProvider, private storage:Storage) {
 
@@ -25,15 +25,15 @@ this.location = JSON.parse(val);
   }
   else {
     this.location = {
-      city: 'Miami',
-      state: 'FL'
+      region: 'Colombo',
+      country: 'SL'
     }
 
   }
 
 
 
-   this.weatherProvider.getWeather(this.location.city, this.location.state).subscribe(weather => {
+   this.weatherProvider.getWeather(this.location.region, this.location.country).subscribe(weather => {
      this.weather = weather.current_observation;
    });
   });
