@@ -9,33 +9,24 @@ import { Storage } from '@ionic/storage';
 })
 export class HomePage {
 
-  weather:any;
-  location:{
-    region:string,
-    country:string
-  }
-  constructor(public navCtrl: NavController, private weatherProvider:WeatherProvider, private storage:Storage) {
+  location: { city: string};
+  weather: any;
 
-  }
+  constructor(private storage: Storage, public navCtrl: NavController, private WeatherProvider: WeatherProvider) {
+    this.storage.get('locations')       //ionic nosql database name is locations
+    .then((val) => {
+      if(val !=null){
+        this.location = JSON.parse(val);
+      } else{
+        this.location = {city:'colombo'};
+      }
 
-  ionViewWillEnter(){
-this.storage.get('location').then((val) => {
-  if(val != null){
-this.location = JSON.parse(val);
-  }
-  else {
-    this.location = {
-      region: 'Colombo',
-      country: 'SL'
-    }
+      this.WeatherProvider.getWeather(this.location.city)
+      .subscribe( weathers => {
+        this.weather = weathers;
+      });
+    });
 
-  }
-
-
-
-   this.weatherProvider.getWeather(this.location.region, this.location.country).subscribe(weather => {
-     this.weather = weather.current_observation;
-   });
-  });
   }
 }
+

@@ -1,19 +1,17 @@
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import 'rxjs/add/operator/map';
 
 @Injectable()
 export class WeatherProvider {
-apikey = '272350c672214bb285c101240182009';
-url;
 
-  constructor(public http: Http) {
-    console.log('Hello WeatherProvider Provider');
-  this.url = 'http://api.apixu.com/v1/current.json?key=272350c672214bb285c101240182009&q=Colombo'
-  }
+  apiKey: string;
 
- getWeather(region, country){
-    return this.http.get(this.url+'/'+region+'/'+country+'.json')
-    .map(res => res.json());
-  }
+    constructor(public http: HttpClient) {
+      this.apiKey = '23a2708addb747059a133758181204';
+    }
+
+    getWeather(city) {
+      return this.http.get('http://api.apixu.com/v1/current.json?key='+this.apiKey+'&q='+city);
+    }
+
 }

@@ -1,7 +1,7 @@
-import { HomePage } from './../home/home';
-import { Storage } from '@ionic/storage';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
@@ -9,21 +9,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'settings.html',
 })
 export class SettingsPage {
-  region:string;
-  country:string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private Storage:Storage) {
+  city: string;
 
-    this.Storage.get('location').then((val) => {
-    if(val != null){
-  let location = JSON.parse(val);
-  this.region = location.region;
-  this.country = location.country;
-} else {
-this.region = 'Colombo';
-this.country = 'SL';
-}
-    })
+  constructor(private storage: Storage, public navCtrl: NavController, public navParams: NavParams) {
 
   }
 
@@ -31,12 +20,13 @@ this.country = 'SL';
     console.log('ionViewDidLoad SettingsPage');
   }
 
-  saveForm(){
-    let location = {
-      region: this.region,
-      country: this.country
-    }
-    this.Storage.set('location', JSON.stringify(location));
-    this.navCtrl.push(HomePage);
+  saveform(){
+    let location = {city: this.city};
+    this.storage.set('locations', JSON.stringify(location))
+    .then((val) => {
+      this.navCtrl.setRoot(HomePage);
+    });
+
   }
+
 }

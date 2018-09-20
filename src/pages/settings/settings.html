@@ -1,35 +1,20 @@
-
 <ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Settings</ion-title>
+    </ion-navbar>
+  </ion-header>
 
-  <ion-navbar>
-    <ion-title>settings</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-<ion-grid>
-  <ion-row>
-    <ion-col width-100>
-      <ion-list>
-        <form (ngSubmit)="saveForm()">
+  <ion-content padding class="body">
+    <h1 align="center">Select City</h1>
+  <br><br>
+        <ion-list>
           <ion-item>
-            <ion-label fixed>
-              City
-            </ion-label>
-            <ion-input [(ngModel)] = "region" name="region" type="text"></ion-input>
+            <ion-input type="text" [(ngModel)]="city" placeholder="City"></ion-input>
           </ion-item>
-          <ion-item>
-              <ion-label fixed>
-                Country
-              </ion-label>
-              <ion-input [(ngModel)] = "country" name="country" type="text"></ion-input>
-            </ion-item>
-          <button ion-button type="submit" block>Save Change</button>
-        </form>
-      </ion-list>
-    </ion-col>
-  </ion-row>
-</ion-grid>
-</ion-content>
+          <button ion-button full (click)="saveform()"r color="secondary">Submit</button>
+        </ion-list>
+
+  </ion-content>
